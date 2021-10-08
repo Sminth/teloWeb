@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TELO Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
+
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <script src="assets/js/vue.js"> </script>
+</head>
+
+<body >
+    <div >
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/images/logo/logo.png"
+                                    style="width:100px ; height:100px ; margin-left : 30px" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+
+                        <li class="sidebar-item active">
+                            <a href="index.html" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="sidebar-item ">
+                            <a href="faciale.html" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                                <span>Reconnaissance faciale</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item ">
+                            <a href="config.html" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                                <span>configuration interne</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="row">
+                    <div class="col-md-3"><h3>Statistiques</h3> </div>
+                </div>
+                
+            </div>
+            <div class="page-content">
+                <section class="row" >
+                    <div class="col-12 col-lg-9">
+                        <div class="row app" >
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon purple">
+                                                    <i class="iconly-boldShow"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Nbre de réconaissance succès</h6>
+                                                <h6 class="font-extrabold mb-0">{{faceCount}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon blue">
+                                                    <i class="iconly-boldProfile"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Nbre de request du chat</h6>
+                                                <h6 class="font-extrabold mb-0">{{requests}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon green">
+                                                    <i class="iconly-boldAdd-User"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Vitesse du robot</h6>
+                                                <h6 class="font-extrabold mb-0">80Km/h</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon red">
+                                                    <i class="iconly-boldBookmark"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Temps moyen de reponse</h6>
+                                                <h6 class="font-extrabold mb-0">{{timing}} sec</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-lg-6 col-md-6">
+                                <div class="card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Services les plus demandés</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="chart-visitors-profile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-6 col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Les responsables les plus demandés</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-lg">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Nbre</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="col-9">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar avatar-md">
+                                                                    <img src="assets/images/faces/5.jpg">
+                                                                </div>
+                                                                <p class="font-bold ms-3 mb-0">Vassindou Touré</p>
+                                                            </div>
+                                                        </td>
+                                                        <td >
+                                                            <p class=" mb-0">10</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-9">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar avatar-md">
+                                                                    <img src="assets/images/faces/2.jpg">
+                                                                </div>
+                                                                <p class="font-bold ms-3 mb-0">Léonce Koné</p>
+                                                            </div>
+                                                        </td>
+                                                        <td >
+                                                            <p class=" mb-0">8</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-9">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar avatar-md">
+                                                                    <img src="assets/images/faces/2.jpg">
+                                                                </div>
+                                                                <p class="font-bold ms-3 mb-0">Erwin Sittie</p>
+                                                            </div>
+                                                        </td>
+                                                        <td >
+                                                            <p class=" mb-0">5</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-3">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar avatar-md">
+                                                                    <img src="assets/images/faces/2.jpg">
+                                                                </div>
+                                                                <p class="font-bold ms-3 mb-0">Franck Wodié</p>
+                                                            </div>
+                                                        </td>
+                                                        <td >
+                                                            <p class=" mb-0">3</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Etat batterie</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="radialGradient"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card app">
+                        <div class="card-header">
+                            Les intensions
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>Intensions entrées</th>
+                                        <th>réponses du chat</th>
+                                        <th>temps</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for='item in intents'>
+                                        <td>{{item[0]}}</td>
+                                        <td>{{item[1]}}</td>
+                                        <td>{{item[2]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2021 &copy; TELO</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="assets/vendors/dayjs/dayjs.min.js"></script>
+    <script src="assets/js/pages/ui-apexchart.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/socket.io.js"></script>
+    <script src="assets/js/client.js"> </script>
+</body>
+
+</html>
